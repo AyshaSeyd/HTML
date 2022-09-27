@@ -55,6 +55,15 @@ let age = 10;
     else {console.log("catch all else");}
     }
 
+    let h = 0;
+    for (h = 0; h < 100; h++) {
+        if (h % 3 == 0 && h % 5 ==0){console.log("FizzBuzz")}
+        else if (h % 3 == 0) {console.log("Fizz");} 
+        else if (h % 5 == 0) {console.log("Buzz");} 
+        else {console.log(h);}
+        }
+
+
 
 
 
