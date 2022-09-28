@@ -63,6 +63,33 @@ let age = 10;
         else {console.log(h);}
         }
 
+function subCalc (num1, num2) { return num1 - num2;}
+console.log(subCalc(10,1000));
+
+const welcome = function(name,age,gender){
+    console.log(`My name is ${name} , age ${age} and I am a ${gender} `);
+}
+welcome("Aysha Seyd", 28, "female");
+
+const powerUp = (n1,n2) => Math.pow(n1,n2);
+console.log(powerUp(3,3));
+
+let multiply = (x) => {
+    return (y) => {return x*y};
+}
+let multi2 = multiply(2);
+console.log(multi2(20));
+let multi5 = multiply(5);
+console.log(multi5(5));
+
+const increase = (val) => {
+    alert(`The new value is ${val+10}`)
+}
+const parent = (child) => {
+    let value = parseInt(prompt("Please enter a value"));
+    child(value);
+}
+parent(increase);
 
 
 
