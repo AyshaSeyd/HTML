@@ -91,6 +91,19 @@ const parent = (child) => {
 }
 parent(increase);
 
+/*let person = () >= {
+    let name = "Billy";
+    return {
+        getName: function() {return name;},
+
+        setName: function (newName) {name = newName;},
+    };
+    }
+let personA = ()
+console.log (personA.getName());
+personA.setName ("Bob Joe");
+console.log(personA.getName());*/
+
 
 
 
