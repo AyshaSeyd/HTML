@@ -1,0 +1,30 @@
+[
+    {
+        "userId": 1,
+        "name": "Aysha"
+    },
+    {
+        "userId": 2,
+        "name": "Fathima"
+    },
+    {
+        "userId": 3,
+        "name": "Zainab"
+    },
+    {
+        "userId": 4,
+        "name": "Hajar"
+    },
+    {
+        "userId": 5,
+        "name": "Muhammed"
+    },
+    {
+        "userId": 6,
+        "name": "Yusuf"
+    },
+    {
+        "userId": 7,
+        "name": "Bilal"
+    }
+]
