@@ -1,0 +1,10 @@
+use document_practice;
+db.document_practice.insertOne({
+    "firstName": "Aysha",
+    "lastName": "Seyd",
+    "age": 28,
+    "occupation: Analyst"
+    "hobbies": ["Powerlifting",
+    "Writing",
+"Travelling"]
+})
