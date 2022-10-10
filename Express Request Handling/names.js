@@ -1,13 +1,8 @@
-const express = require("express");
+const express = require("express").Router();
 
+const { nameModel } = require("./db");
 
-const app = express();
-
-const bodyParser = require("body-parser");
-
-app.use(bodyParser.json());
-
-app.use((req, res, next) => {
+/*app.use((req, res, next) => {
     console.log("Request received at", new Date());
     return next();
 })
@@ -15,20 +10,20 @@ app.use((req, res, next) => {
 app.use((req, res, next) => {
     console.log("I am done with express");
     return next();
-})
+})*/
 
-app.get("/Hi", (req, res) => {
+express.get("/Hi", (req, res) => {
     res.send("Hi, my name is Aysha");
 });
 
 
 let names = ['Saleena', 'Haseeba', 'Naseema'];
 
-app.get("/getAll", (req, res) => {
+express.get("/getAll", (req, res) => {
     res.send(names)
 });
 
-app.get("/get/:id", (req, res) =>
+express.get("/get/:id", (req, res) =>
     res.send(names[req.params.id]));
 
 const deleteMiddleware = ((req, res, next) => {
@@ -36,7 +31,7 @@ const deleteMiddleware = ((req, res, next) => {
     next();
 })
 
-app.delete("/remove/:id", deleteMiddleware, (req, res, next) => {
+express.delete("/remove/:id", deleteMiddleware, (req, res, next) => {
     const id = req.params.id;
     console.log("ID", id);
     if (id > names.length) 
@@ -44,13 +39,13 @@ app.delete("/remove/:id", deleteMiddleware, (req, res, next) => {
     res.send(names.splice(id, 1))
 });
 
-app.post("/create", (req, res) => {
+express.post("/create", (req, res) => {
     const name = req.body.name;
     names.push(name);
     res.status(201).send(`${name} added successfully`)
 });
 
-app.put("/replace/:id", (req, res) => {
+express.put("/replace/:id", (req, res) => {
     console.log = ("Query", req.query);
     const name = req.query.name;
     const index = req.params.index;
@@ -59,7 +54,9 @@ app.put("/replace/:id", (req, res) => {
     res.status(202).send(`${old} successfully replaced with ${name}`);
 });
 
-app.use((err, req, res, next) => {
+module.exports = express;
+
+/*app.use((err, req, res, next) => {
     console.log(err);
     res.status(err.status).send(err.message);
 }
@@ -67,4 +64,4 @@ app.use((err, req, res, next) => {
 
 const server = app.listen(4420, () => {
     console.log(`server successfully started on port ${server.address().port}`);
-})
+})*/
