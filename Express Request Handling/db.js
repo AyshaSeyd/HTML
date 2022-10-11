@@ -4,7 +4,7 @@ mongoose.connect("mongodb://localhost:27017/tdp_db", {
     useNewUrlParser: true
 });
 
-const nameSchema = new mongoose.Schema({
+const personSchema = new mongoose.Schema({
     disposition: {
         type: String,
         require: true
@@ -16,8 +16,8 @@ const nameSchema = new mongoose.Schema({
     }
 });
 
-const nameModel = mongoose.model("name", nameSchema);
+const personModel = mongoose.model("person", personSchema);
 
 module.exports = {
-    nameModel
+    personModel
 }

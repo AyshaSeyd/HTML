@@ -1,6 +1,6 @@
-const express = require("express").Router();
+const router = require("express").Router();
 
-const { nameModel } = require("./db");
+const { personModel } = require("./db");
 
 /*app.use((req, res, next) => {
     console.log("Request received at", new Date());
@@ -12,18 +12,20 @@ app.use((req, res, next) => {
     return next();
 })*/
 
-express.get("/Hi", (req, res) => {
+router.get("/Hi", (req, res) => {
     res.send("Hi, my name is Aysha");
 });
 
 
 let names = ['Saleena', 'Haseeba', 'Naseema'];
 
-express.get("/getAll", (req, res) => {
-    res.send(names)
-});
+router.get("/getAll", (req, res) =>
+    personModel.find({})
+        .then(people => res.send(people))
+        .catch(err => next(err))
+);
 
-express.get("/get/:id", (req, res) =>
+router.get("/get/:id", (req, res) =>
     res.send(names[req.params.id]));
 
 const deleteMiddleware = ((req, res, next) => {
@@ -31,21 +33,21 @@ const deleteMiddleware = ((req, res, next) => {
     next();
 })
 
-express.delete("/remove/:id", deleteMiddleware, (req, res, next) => {
+router.delete("/remove/:id", deleteMiddleware, (req, res, next) => {
     const id = req.params.id;
     console.log("ID", id);
-    if (id > names.length) 
+    if (id > names.length)
         return next({ status: 404, message: `No name found with ${id}` });
     res.send(names.splice(id, 1))
 });
 
-express.post("/create", (req, res) => {
-    const name = req.body.name;
-    names.push(name);
-    res.status(201).send(`${name} added successfully`)
-});
+router.post("/create", (req, res) =>
+    personModel.create(req.body)
+        .then(newPerson => res.status(201).send(newPerson))
+        .catch(err => next(err))
+);
 
-express.put("/replace/:id", (req, res) => {
+router.put("/replace/:id", (req, res) => {
     console.log = ("Query", req.query);
     const name = req.query.name;
     const index = req.params.index;
@@ -54,7 +56,7 @@ express.put("/replace/:id", (req, res) => {
     res.status(202).send(`${old} successfully replaced with ${name}`);
 });
 
-module.exports = express;
+module.exports = router;
 
 /*app.use((err, req, res, next) => {
     console.log(err);
