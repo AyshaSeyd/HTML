@@ -18,3 +18,4 @@ console.log(myFactorial(150));
 console.log(myFactorial(60));
 
 module.exports = myFactorial;
+
