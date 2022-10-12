@@ -7,12 +7,12 @@ mongoose.connect("mongodb://localhost:27017/tdp_db", {
 const personSchema = new mongoose.Schema({
     disposition: {
         type: String,
-        require: true
+        required: true
     },
     age: String,
     name: {
         type: String,
-        require: true
+        required: true
     }
 });
 

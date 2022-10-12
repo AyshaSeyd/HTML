@@ -6,7 +6,9 @@ const { personModel } = require("./db");
 
 const app = express();
 
-const server = app.listen(4420);
+const bodyParser = require("body-parser");
+
+app.use(bodyParser.json());
 
 app.get("/Hi", (req, res) => {
     res.send("Hi, my name is Aysha");
@@ -43,6 +45,10 @@ app.post("/create", (req, res, next) => {
         .catch(err => next(err))
 });
 
-//app.use(app);
+app.use((err, req, res, next) => {
+    res.status(400).send(err);
+})
+
+const server = app.listen(4420);
 
 module.exports = server;
