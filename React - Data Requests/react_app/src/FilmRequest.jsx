@@ -13,7 +13,7 @@ const Film = () => {
   
     const makeRequest = (e) => {
      
-      axios.get("http://www.omdbapi.com/?apikey=" + apiKey + "&t" + filmTitle)
+      axios.get("http://www.omdbapi.com/?apikey=b8daade7" + apiKey + "&t=" + filmTitle)
       .then(response => {
         console.log(response.data);
         setData(response.data);
@@ -24,10 +24,10 @@ const Film = () => {
       <>
       <div>
         <h2>FilmRequest.js</h2>
-          <p>b8daade7</p>
+          <p>Enter your API Key for OMDB here</p>
           <input type="text" onChange={(e)=> updateApiKey(e)}/>
           <p>Enter the name of the film you are searching for</p>
-          <input type="text" onChange={(e)=> setFilmTitle(e)}/>
+          <input type="text" onChange={(e)=> setFilmTitle(e.target.value)}/>
           <p>Do not click this button until the fields above are correctly filled</p>
           <button onClick={(e) => makeRequest(e)}>Click me</button>
   
