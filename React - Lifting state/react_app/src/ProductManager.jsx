@@ -17,8 +17,6 @@ const Items = () => {
   const handleAdd = () => {
     setItems(items => [...Items, ItemName]);
   }
-
-  
 return(
   <>
   <AddItems submitHandler={submitForm} newItem={newItem} handleAdd={handleAdd}/>

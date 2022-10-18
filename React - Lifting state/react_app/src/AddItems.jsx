@@ -1,4 +1,4 @@
-const AddItems = ({ submitHandler, newItem, handleAdd}) => {
+const AddItems = ({ submitHandler, newItem, handleAdd }) => {
     return (
         <form onSubmit={submitHandler}>
             <input
@@ -12,7 +12,6 @@ const AddItems = ({ submitHandler, newItem, handleAdd}) => {
                 AddItem
             </button>
         </form>
-    );
-
-}
+  );
+};
 export default AddItems;
