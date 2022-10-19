@@ -3,6 +3,7 @@ import axios from 'axios'
 
 const Film = () => {
     const [data, setData] = useState ("");
+    // eslint-disable-next-line
     const [apiKey, setApiKey] = useState ("");
     const [filmTitle, setFilmTitle] = useState ("");
 
@@ -23,7 +24,7 @@ const Film = () => {
     return (
       <>
       <div>
-        <h2>FilmRequest.js</h2>
+        <h2>Film Request</h2>
           <p>Enter your API Key for OMDB here</p>
           <input type="text" onChange={(e)=> updateApiKey(e)}/>
           <p>Enter the name of the film you are searching for</p>
